@@ -20,15 +20,21 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-option(BUILD_SHARED_LIBS "TBB BUILD_SHARED_LIBS" ON)
-option(TBBMALLOC_BUILD  "TBB TBBMALLOC_BUILD" ON)
-option(TBB_EXAMPLES "TBB TBB_EXAMPLES" OFF)
-option(TBB_STRICT "TBB TBB_STRICT" OFF)
-option(TBB_TEST "TBB TBB_TEST" OFF)
+
 #option(TBB_SANITIZE "TBB TBB_SANITIZE" "thread")
 
-include(FetchContent)
-FetchContent_Declare(TBB
-    URL https://github.com/uxlfoundation/oneTBB/archive/refs/tags/v2022.0.0.tar.gz
-    OVERRIDE_FIND_PACKAGE)
-FetchContent_MakeAvailable(TBB)
+if ( NOT TARGET TBB )
+	include( FetchContent )
+
+	option( BUILD_SHARED_LIBS "TBB BUILD_SHARED_LIBS" ON )
+	option( TBBMALLOC_BUILD "TBB TBBMALLOC_BUILD" ON )
+	option( TBB_EXAMPLES "TBB TBB_EXAMPLES" OFF )
+	option( TBB_STRICT "TBB TBB_STRICT" OFF )
+	option( TBB_TEST "TBB TBB_TEST" OFF )
+
+	FetchContent_Declare( TBB
+		URL https://github.com/uxlfoundation/oneTBB/archive/refs/tags/v2022.0.0.tar.gz
+		OVERRIDE_FIND_PACKAGE
+		SYSTEM )
+	FetchContent_MakeAvailable( TBB )
+endif ()
