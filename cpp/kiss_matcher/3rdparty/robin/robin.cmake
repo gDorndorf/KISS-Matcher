@@ -29,6 +29,7 @@ if ( NOT TARGET robin )
 	FetchContent_Declare( robin
 		GIT_REPOSITORY https://github.com/gDorndorf/ROBIN.git
 		GIT_TAG bad81bcbb299809b813bd50c2b57238161e8b630 # Fri Aug 22 [cmake] make include directories portable
+		GIT_SHALLOW TRUE
 		SYSTEM
 		EXCLUDE_FROM_ALL
 		GIT_PROGRESS TRUE )
